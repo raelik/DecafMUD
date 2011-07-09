@@ -1411,6 +1411,11 @@ DecafMUD.prototype.socketConnected = function() {
 	if ( this.ui && this.ui.connected ) {
 		this.ui.connected(); }
 	
+	var decaf = this;
+	if ( this.options.onconnect ) {
+		setTimeout(function(){decaf.options.onconnect(decaf);},1);
+	}
+
 	//if ( this.display ) {
 	//	this.display.message('<b>Connected.</b>'.tr(this,host,port),'decafmud socket status'); }
 }
